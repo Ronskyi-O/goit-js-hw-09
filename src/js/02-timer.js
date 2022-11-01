@@ -46,7 +46,9 @@ function timerStart() {
         const { days, hours, minutes, seconds } = convertMs(timeDifference)
 
         if (timeDifference < 1000) {
-        clearInterval(timerId)
+            clearInterval(timerId)
+            makeBtnStartAvailable()
+            makeDatetimePickerAvailable()
         }
     
         updateTimerInterface({ days, hours, minutes, seconds })
@@ -65,6 +67,10 @@ function makeBtnStartAvailable() {
 
 function makeDatetimePickerDisabled() {
     getEl('#datetime-picker').setAttribute('disabled', '');
+}
+
+function makeDatetimePickerAvailable() {
+    getEl('#datetime-picker').removeAttribute('disabled', '');
 }
 
 function alert() {
